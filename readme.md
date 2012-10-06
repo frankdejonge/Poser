@@ -35,3 +35,14 @@ Poser wil act like:
 $obj = new NotSo\Deep\Model();
 // ACLass\InA\Deep\And\Hidden\Namespace\Model;
 ```
+
+You can also have multiple wildcards:
+
+```php
+Poser\Poser::alias(array(
+	'*\Dude\*\Is\*\Man' => '$1\$2\$3',
+));
+
+$obj = new Hey\Dude\What\Is\Up\Man()
+// Wil stranslate to Hey\WHat\Up
+```
