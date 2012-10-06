@@ -49,6 +49,22 @@ $obj = new Hey\Dude\What\Is\Up\Man()
 // Wil stranslate to Hey\WHat\Up
 ```
 
+## Closure translations
+
+You can also modify the translation in a closure.
+
+```php
+Poser\Poser::alias(array(
+	'*\*\Strange' => function($one, $two)
+	{
+		return $one.'\\'.$two.'\\Weird';
+	}
+));
+
+$instance = new That\Stuffs\Strange();
+// Will be a new instance of That\Stuffs\Weird
+```
+
 ## Registering the autoloader
 
 ```php
