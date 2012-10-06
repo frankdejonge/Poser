@@ -48,3 +48,30 @@ Poser\Poser::alias(array(
 $obj = new Hey\Dude\What\Is\Up\Man()
 // Wil stranslate to Hey\WHat\Up
 ```
+
+## Registering the autoloader
+
+```php
+Poser\Poser::register();
+
+// Unregister
+Poser\Poser::unregister();
+```
+
+## Multiton usage
+
+You can also register more Posers to the autoloader.
+
+```php
+
+$poser = Poser\Poser::instance('justin_bieber');
+
+// Alias some classes
+$poser->alias(array(
+	'Justin\Bieber' => 'InvalidArgumentException',
+));
+
+// Register the autoloader
+$poser->register();
+
+```
