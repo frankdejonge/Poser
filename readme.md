@@ -1,5 +1,7 @@
 # Poser
 
+[![Build Status](https://secure.travis-ci.org/FrenkyNet/Poser.png)](http://travis-ci.org/FrenkyNet/Poser)
+
 Poser appends itself to the autoloading stack and resolves class aliasses. This all so your classes can pretend to be someone else.
 
 ## Usage
