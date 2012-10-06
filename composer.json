@@ -1,0 +1,8 @@
+{
+    "name": "poser/poser",
+    "type": "library",
+    "description": "Composer Alias Package",
+    "autoload": {
+		"psr-0": {"Poser": "src/"}
+	}
+}
