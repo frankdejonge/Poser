@@ -38,15 +38,22 @@ class Pose
 		{
 			$pattern = str_replace('\\*', '(.*)', preg_quote($pattern, '#'));
 
-			if (preg_match('#^'.$pattern.'$#uD', $classname))
+			if (preg_match('#^'.$pattern.'$#uD', $classname, $matches))
 			{
-				$replacement = str_replace('\\', '\\\\', $replacement);
-				$class = preg_replace('#^'.$pattern.'$#uD', $replacement, $classname);
+				if ($replacement instanceof \Closure)
+				{
+					array_shift($matches);
+					$class = call_user_func_array($replacement, $matches);
+				}
+				else
+				{
+					$replacement = str_replace('\\', '\\\\', $replacement);
+					$class = preg_replace('#^'.$pattern.'$#uD', $replacement, $classname);
+				}
 
 				if (class_exists($class, true))
 				{
 					class_alias($class, $classname);
-					
 					$this->checkingClass = null;
 
 					return true;
