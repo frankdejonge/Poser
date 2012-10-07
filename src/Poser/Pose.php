@@ -20,6 +20,16 @@ class Pose
 	protected $registered = false;
 
 	/**
+	 * Constructor
+	 *
+	 * @param  bool  $register  wether to register the autoload function
+	 */
+	public function __construct($register = false)
+	{
+		$register and $this->register();
+	}
+
+	/**
 	 * Autoloader function. Checks for a matching alias,
 	 * loads the destination class when found and creates
 	 * the class alias.
@@ -76,7 +86,7 @@ class Pose
 	public function alias(array $aliasses, $prepend = false)
 	{
 		$this->map = $prepend ? array_merge($aliasses, $this->map) : array_merge($this->map, $aliasses);
-	
+
 		return $this;
 	}
 
@@ -100,7 +110,7 @@ class Pose
 				unset($this->map[$pattern]);
 			}
 		}
-		
+
 		return $this;
 	}
 
@@ -117,7 +127,7 @@ class Pose
 			spl_autoload_register(array($this, 'load'), true, $prepend);
 			$this->registered = true;
 		}
-		
+
 		return $this;
 	}
 
@@ -133,7 +143,7 @@ class Pose
 			spl_autoload_unregister(array($this, 'load'));
 			$this->registered = false;
 		}
-		
+
 		return $this;
 	}
 }
