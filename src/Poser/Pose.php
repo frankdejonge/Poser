@@ -39,6 +39,18 @@ class Pose
 			return false;
 		}
 
+		$this->checkingClass = $classname;
+
+		// Check for simple alias first.
+		if (isset($this->map[$classname]) and class_exists($this->map[$classname], true))
+		{
+			class_alias($this->map[$classname], $classname);
+			$this->checkingClass = null;
+
+			return true;
+		}
+
+		// Check for an advanced alias.
 		foreach ($this->map as $pattern => $replacement)
 		{
 			$pattern = str_replace('\\*', '(.*)', preg_quote($pattern, '#'));
