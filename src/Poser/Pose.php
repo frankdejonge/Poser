@@ -15,11 +15,6 @@ class Pose
 	protected $checkingClass;
 
 	/**
-	 * @var  bool  $registered  wether the autoloader function has been registered
-	 */
-	protected $registered = false;
-
-	/**
 	 * Constructor
 	 *
 	 * @param  bool  $register  wether to register the autoload function
@@ -122,11 +117,7 @@ class Pose
 	 */
 	public function register($prepend = true)
 	{
-		if ( ! $this->registered)
-		{
-			spl_autoload_register(array($this, 'load'), true, $prepend);
-			$this->registered = true;
-		}
+		spl_autoload_register(array($this, 'load'), true, $prepend);
 
 		return $this;
 	}
@@ -138,11 +129,7 @@ class Pose
 	 */
 	public function unregister()
 	{
-		if ($this->registered)
-		{
-			spl_autoload_unregister(array($this, 'load'));
-			$this->registered = false;
-		}
+		spl_autoload_unregister(array($this, 'load'));
 
 		return $this;
 	}
