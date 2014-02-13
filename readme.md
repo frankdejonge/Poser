@@ -1,3 +1,7 @@
+# WARNING WARNING, DEPRECATED PACKAGE!
+
+I've made a way better and optimizable version: [FuelPHP/Alias](http://github.com/fuelphp/alias). I strongly recommend using that package instead of this one.
+
 # Poser
 
 [![Build Status](https://secure.travis-ci.org/FrenkyNet/Poser.png)](http://travis-ci.org/FrenkyNet/Poser)
